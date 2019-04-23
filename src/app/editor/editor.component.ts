@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 
 import { Note } from '../note';
 import { NoteService } from '../note.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-editor',
@@ -24,7 +25,8 @@ export class EditorComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private noteService: NoteService,
-    private titleService: Title
+    private titleService: Title,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -47,11 +49,12 @@ export class EditorComponent implements OnInit {
           this.noteService.get(params.get('noteId'))
             .subscribe(
               response => {
+                this.messageService.success('Fetched note.');
                 this.currentNote = response.body as Note;
                 this.updateInputValues();
               },
               error => {
-                //TODO message
+                this.messageService.error(error);
                 this.router.navigate(['/']);
               }
             );
@@ -62,8 +65,10 @@ export class EditorComponent implements OnInit {
       },
 
       error => {
-        //TODO message
-        this.router.navigate(['/']);
+        this.messageService.error(error);
+        if(error.status == 404) {
+          this.router.navigate(['/']);
+        }
       }
     );
 
@@ -81,10 +86,11 @@ export class EditorComponent implements OnInit {
       let note = { title: this.noteForm.value.title, content: this.noteForm.value.content } as Note;
       this.noteService.create(note).subscribe(
         response => {
+          this.messageService.success('Created note.');
           this.router.navigate(['/', response.body.id]);
         },
         error => {
-          //TODO message
+          this.messageService.error(error);
         }
       );
     }
@@ -92,11 +98,12 @@ export class EditorComponent implements OnInit {
       let note = { id: this.currentNote.id, title: this.noteForm.value.title, content: this.noteForm.value.content } as Note;
       this.noteService.update(note).subscribe(
         response => {
+          this.messageService.success('Updated note.');
           this.currentNote = response.body as Note;
           this.updateInputValues();
         },
         error => {
-          //TODO message
+          this.messageService.error(error);
         }
       );
     }
