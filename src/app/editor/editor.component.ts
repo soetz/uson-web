@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { Note } from '../note';
 import { NoteService } from '../note.service';
 import { MessageService } from '../message.service';
+import { HtmlEntityDecodePipe } from '../html-entity-decode.pipe';
 
 @Component({
   selector: 'app-editor',
@@ -26,7 +27,8 @@ export class EditorComponent implements OnInit {
     private router: Router,
     private noteService: NoteService,
     private titleService: Title,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private htmlEntitiesDecodePipe: HtmlEntityDecodePipe
   ) { }
 
   ngOnInit() {
@@ -74,10 +76,10 @@ export class EditorComponent implements OnInit {
 
   }
 
-  updateInputValues() { //TODO unsanitize strings (??)
+  updateInputValues() {
     this.noteForm.setValue({
-      title: this.currentNote.title,
-      content: this.currentNote.content
+      title: this.htmlEntitiesDecodePipe.transform(this.currentNote.title),
+      content: this.htmlEntitiesDecodePipe.transform(this.currentNote.content)
     });
   }
 

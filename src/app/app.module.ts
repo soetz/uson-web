@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
 import { MessagesComponent } from './messages/messages.component';
+import { HtmlEntityDecodePipe } from './html-entity-decode.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
-    MessagesComponent
+    MessagesComponent,
+    HtmlEntityDecodePipe
   ],
   imports: [
     BrowserModule,
