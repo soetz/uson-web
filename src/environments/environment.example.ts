@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: '' // <- put API endpoint here
+  apiEndpoint: 'http://api.example.com/' // <- put API endpoint here
 };
 
 /*
