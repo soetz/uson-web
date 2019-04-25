@@ -2,6 +2,7 @@
 Utra Simple Online Notepad
 
 ## requirements
+- node.js ^10 + npm
 
 ## installation
 clone repo, run `npm install`
