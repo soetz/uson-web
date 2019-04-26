@@ -39,7 +39,12 @@ export class EditorComponent implements OnInit {
   documentTitleAutoUpdate() {
     this.noteForm.valueChanges.subscribe(
       values => {
-        this.titleService.setTitle('uson > ' + values.title);
+        if(values.title !== "") {
+          this.titleService.setTitle('uson > ' + values.title);
+        }
+        else {
+          this.titleService.setTitle('uson');
+        }
       }
     );
   }

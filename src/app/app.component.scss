@@ -33,9 +33,13 @@ header {
     }
 
     .logo {
-        font: {
-            size: 25px;
-            weight: bold;
+        height: 100%;
+        
+        display: flex;
+        align-items: center;
+
+        & img {
+            height: 75%;
         }
     }
 }
