@@ -4,23 +4,27 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { EditorComponent } from './editor/editor.component';
-import { MessagesComponent } from './messages/messages.component';
-import { HtmlEntityDecodePipe } from './html-entity-decode.pipe';
+import { EditorComponent } from './components/editor/editor.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MessagesComponent } from './components/messages/messages.component';
+
+import { HtmlEntityDecodePipe } from './pipes/html-entity-decode/html-entity-decode.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
+    HeaderComponent,
     MessagesComponent,
     HtmlEntityDecodePipe
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

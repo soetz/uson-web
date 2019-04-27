@@ -6,7 +6,7 @@
       'error': message.level === MessageLevel.Error
     }">
     <div class="message-control">
-      <img src="assets/close.svg" (click)="messageService.removeMessage(message)" />
+      <img src="assets/icons/close.svg" (click)="messageService.removeMessage(message)" />
     </div>
     <div class="message-text">
       {{ message.message }}

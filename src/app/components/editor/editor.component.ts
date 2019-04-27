@@ -3,10 +3,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { Note } from '../note';
-import { NoteService } from '../note.service';
-import { MessageService } from '../message.service';
-import { HtmlEntityDecodePipe } from '../html-entity-decode.pipe';
+import { Note } from '../../models/note';
+import { NoteService } from '../../services/note/note.service';
+import { MessageService } from '../../services/message/message.service';
+import { HtmlEntityDecodePipe } from '../../pipes/html-entity-decode/html-entity-decode.pipe';
 
 @Component({
   selector: 'app-editor',

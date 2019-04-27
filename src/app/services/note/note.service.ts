@@ -3,9 +3,9 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { environment } from '../environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { Note } from './note';
+import { Note } from '../../models/note';
 
 @Injectable({
   providedIn: 'root'

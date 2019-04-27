@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { MessageLevel } from './message-level';
-import { Message } from './message';
+import { MessageLevel } from '../../models/message-level';
+import { Message } from '../../models/message';
 
 @Injectable({
   providedIn: 'root'
