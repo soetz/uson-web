@@ -1,0 +1,70 @@
+@import 'variables';
+
+:host {
+    height: 100%;
+}
+
+form {
+    height: 100%;
+    max-width: $container-width;
+    margin: auto;
+
+    padding: $padding;
+    padding-top: $padding - $gap;
+
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+        margin-top: $gap;
+    }
+
+}
+
+.title-container, .content-container {
+    &, & > * {
+        width: 100%;
+    }
+}
+
+.title-container input {
+    font-size: 24px;
+}
+
+.content-container {
+
+    &, textarea {
+        height: 100%;
+    }
+
+    textarea {
+        font-size: 16px;
+    }
+}
+
+textarea {
+    resize: none;
+    overflow-y: auto;
+}
+
+.action-container {
+    button {
+        padding: 10px 20px;
+        border: none;
+
+        background-color: $primary-color;
+        color: #000000;
+        transition: background-color 0.15s ease-in-out;
+
+        font: {
+            size: 16px;
+            weight: bold;
+        }
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: lighten($primary-color, 12%);
+        }
+    }
+}

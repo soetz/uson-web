@@ -1,0 +1,16 @@
+<div class="messages">
+  <div *ngFor="let message of messageService.messages" class="message-container">
+    <div class="message" (mouseenter)="messageService.stopCountdown(message)" (mouseleave)="messageService.startCountdown(message)" [class.active]="message.active" [ngClass]="{
+      'success': message.level === MessageLevel.Success,
+      'warning': message.level === MessageLevel.Warning,
+      'error': message.level === MessageLevel.Error
+    }">
+    <div class="message-control">
+      <img src="assets/icons/close.svg" (click)="messageService.removeMessage(message)" />
+    </div>
+    <div class="message-text">
+      {{ message.message }}
+    </div>
+    </div>
+  </div>
+</div>

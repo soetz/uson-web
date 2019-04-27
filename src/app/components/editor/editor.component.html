@@ -1,0 +1,13 @@
+<form [formGroup]="noteForm" (ngSubmit)="onSave()">
+    <div class="title-container">
+        <input type="text" formControlName="title" placeholder="Your note title" />
+    </div>
+    <div class="content-container">
+        <textarea formControlName="content" placeholder="Your note content"></textarea>
+    </div>
+    <div class="action-container">
+        <button type="submit">
+            Save
+        </button>
+    </div>
+</form>
