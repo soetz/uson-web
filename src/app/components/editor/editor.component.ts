@@ -15,7 +15,8 @@ import { HtmlEntityDecodePipe } from '../../pipes/html-entity-decode/html-entity
 })
 export class EditorComponent implements OnInit {
 
-  currentNote: Note;
+  currentNote: Note = {id: "", title: "", content: ""};
+  isModified: boolean;
 
   noteForm = new FormGroup({
     title: new FormControl(),
@@ -32,19 +33,36 @@ export class EditorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isModified = false;
     this.documentTitleAutoUpdate();
+    this.modifiedAutoUpdate();
     this.routing();
   }
 
   documentTitleAutoUpdate() {
+    this.setDocumentTitle(this.currentNote.title);
     this.noteForm.valueChanges.subscribe(
       values => {
-        if(values.title !== "") {
-          this.titleService.setTitle('uson > ' + values.title);
-        }
-        else {
-          this.titleService.setTitle('uson');
-        }
+        this.setDocumentTitle(values.title);
+      }
+    );
+  }
+
+  setDocumentTitle(title: string | null) {
+    if(title !== "" && title !== null) {
+      this.titleService.setTitle('uson > ' + title);
+    }
+    else {
+      this.titleService.setTitle('uson');
+    }
+  }
+
+  modifiedAutoUpdate() {
+    this.noteForm.valueChanges.subscribe(
+      values => {
+        let title = (values.title === null) ? "" : values.title;
+        let content = (values.content === null) ? "" : values.content;
+        this.isModified = (title !== this.currentNote.title || content !== this.currentNote.content);
       }
     );
   }
@@ -58,16 +76,13 @@ export class EditorComponent implements OnInit {
               response => {
                 this.messageService.success('Fetched note.');
                 this.currentNote = response.body as Note;
-                this.updateInputValues();
+                this.setInputValues();
               },
               error => {
                 this.messageService.error(error);
                 this.router.navigate(['/']);
               }
             );
-        }
-        else {
-          this.currentNote = {id: '', title: '', content: ''} as Note;
         }
       },
 
@@ -81,7 +96,7 @@ export class EditorComponent implements OnInit {
 
   }
 
-  updateInputValues() {
+  setInputValues() {
     this.noteForm.setValue({
       title: this.htmlEntitiesDecodePipe.transform(this.currentNote.title),
       content: this.htmlEntitiesDecodePipe.transform(this.currentNote.content)
@@ -107,7 +122,7 @@ export class EditorComponent implements OnInit {
         response => {
           this.messageService.success('Updated note.');
           this.currentNote = response.body as Note;
-          this.updateInputValues();
+          this.setInputValues();
         },
         error => {
           this.messageService.error(error);
@@ -115,5 +130,4 @@ export class EditorComponent implements OnInit {
       );
     }
   }
-
 }
