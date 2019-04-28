@@ -16,6 +16,7 @@ import { HtmlEntityDecodePipe } from '../../pipes/html-entity-decode/html-entity
 export class EditorComponent implements OnInit {
 
   currentNote: Note;
+  isModified: boolean;
 
   noteForm = new FormGroup({
     title: new FormControl(),
@@ -32,19 +33,31 @@ export class EditorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isModified = false;
     this.documentTitleAutoUpdate();
+    this.modifiedAutoUpdate();
     this.routing();
   }
 
   documentTitleAutoUpdate() {
     this.noteForm.valueChanges.subscribe(
       values => {
-        if(values.title !== "") {
+        if(values.title !== "" && values.title !== null) {
           this.titleService.setTitle('uson > ' + values.title);
         }
         else {
           this.titleService.setTitle('uson');
         }
+      }
+    );
+  }
+
+  modifiedAutoUpdate() {
+    this.noteForm.valueChanges.subscribe(
+      values => {
+        let title = (values.title === null) ? "" : values.title;
+        let content = (values.content === null) ? "" : values.content;
+        this.isModified = (title !== this.currentNote.title || content !== this.currentNote.content);
       }
     );
   }
@@ -115,5 +128,4 @@ export class EditorComponent implements OnInit {
       );
     }
   }
-
 }

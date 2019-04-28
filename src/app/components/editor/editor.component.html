@@ -6,7 +6,7 @@
         <textarea formControlName="content" placeholder="Your note content"></textarea>
     </div>
     <div class="action-container">
-        <button type="submit">
+        <button type="submit" [disabled]="!isModified">
             Save
         </button>
     </div>
