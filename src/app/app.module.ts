@@ -11,6 +11,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { MessagesComponent } from './components/messages/messages.component';
 
 import { HtmlEntityDecodePipe } from './pipes/html-entity-decode/html-entity-decode.pipe';
+import { CopyLinkButtonComponent } from './components/copy-link-button/copy-link-button.component';
+import { CopyClipboardDirective } from './directives/copy-clipboard.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HtmlEntityDecodePipe } from './pipes/html-entity-decode/html-entity-dec
     EditorComponent,
     HeaderComponent,
     MessagesComponent,
-    HtmlEntityDecodePipe
+    HtmlEntityDecodePipe,
+    CopyLinkButtonComponent,
+    CopyClipboardDirective
   ],
   imports: [
     AppRoutingModule,

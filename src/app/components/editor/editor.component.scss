@@ -48,6 +48,13 @@ textarea {
 }
 
 .action-container {
+    display: flex;
+    align-items: center;
+
+    & > *:not(:first-child) {
+        margin-left: $gap;
+    }
+
     button {
         padding: 10px 20px;
         border: none;
