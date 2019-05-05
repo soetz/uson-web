@@ -1,9 +1,5 @@
 @import 'variables';
 
-:host {
-
-}
-
 header {
     background-color: $primary-color;
 
@@ -11,26 +7,42 @@ header {
         color: #000000;
         text-decoration: none;
     }
+}
 
+.header-container {
+    height: $header-height-mobile;
+    max-width: $container-width;
+    margin: auto;
+
+    padding: $padding/3 $padding;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 65%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & img {
+        height: 100%;
+    }
+}
+
+@media (min-width: 500px) {
     .header-container {
         height: $header-height;
-        max-width: $container-width;
-        margin: auto;
 
-        padding: 0 $padding;
+        flex-direction: row;
 
-        display: flex;
-        align-items: center;
     }
 
     .logo {
         height: 100%;
-        
-        display: flex;
-        align-items: center;
-
-        & img {
-            height: 75%;
-        }
     }
 }

@@ -1,0 +1,10 @@
+<form [formGroup]="goToNote" (ngSubmit)="onSubmit()">
+  <div class="input-container">
+    <input type="text" formControlName="note" placeholder="Go to note…" />
+  </div>
+  <div class="button-container">
+    <button type="submit">
+      Go
+    </button>
+  </div>
+</form>

@@ -1,0 +1,54 @@
+@import "variables";
+
+:host {
+    width: 100%;
+}
+
+form {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+.input-container {
+    width: 100%;
+    min-width: 80px;
+
+    input {
+        width: 100%;
+    }
+}
+
+.button-container {
+    margin-left: $gap;
+
+    button {
+        border: none;
+
+        padding: 4px 12px;
+    
+        background-color: #000000;
+        color: $primary-color;
+        transition: background-color 0.15s ease-in-out;
+
+        font: {
+            size: 14px;
+            weight: bold;
+        }
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: mix(#000000, $primary-color, 70%);
+        }
+    }
+}
+
+@media (min-width: 500px) {
+    :host {
+        width: 350px;
+
+        margin-left: $gap;
+    }
+}

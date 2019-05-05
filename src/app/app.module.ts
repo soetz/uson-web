@@ -9,9 +9,11 @@ import { AppComponent } from './app.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { CopyLinkButtonComponent } from './components/copy-link-button/copy-link-button.component';
+import { GoToNoteFieldComponent } from './components/go-to-note-field/go-to-note-field.component';
 
 import { HtmlEntityDecodePipe } from './pipes/html-entity-decode/html-entity-decode.pipe';
-import { CopyLinkButtonComponent } from './components/copy-link-button/copy-link-button.component';
+
 import { CopyClipboardDirective } from './directives/copy-clipboard.directive';
 
 @NgModule({
@@ -22,7 +24,8 @@ import { CopyClipboardDirective } from './directives/copy-clipboard.directive';
     MessagesComponent,
     HtmlEntityDecodePipe,
     CopyLinkButtonComponent,
-    CopyClipboardDirective
+    CopyClipboardDirective,
+    GoToNoteFieldComponent
   ],
   imports: [
     AppRoutingModule,
