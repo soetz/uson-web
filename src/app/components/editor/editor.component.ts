@@ -62,7 +62,7 @@ export class EditorComponent implements OnInit {
       values => {
         let title = (values.title === null) ? "" : values.title;
         let content = (values.content === null) ? "" : values.content;
-        this.isModified = (title !== this.currentNote.title || content !== this.currentNote.content);
+        this.isModified = (title !== this.htmlEntitiesDecodePipe.transform(this.currentNote.title) || content !== this.htmlEntitiesDecodePipe.transform(this.currentNote.content));
       }
     );
   }
